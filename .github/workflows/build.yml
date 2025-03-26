@@ -4,32 +4,24 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   sonarQubeAnalysis:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download SonarScanner CLI
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-          unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-          echo "${GITHUB_WORKSPACE}/sonar-scanner-5.0.1.3006-linux/bin" >> $GITHUB_PATH
-
-      - name: Run sonar-scanner
+      - name: Run SonarScanner
         run: sonar-scanner
         env:
+       
           SONAR_TOKEN: sqp_071a1644cbc10ce5a58f6d907c6b71c92654f1e0
           SONAR_HOST_URL: http://localhost:9000
