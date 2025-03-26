@@ -31,5 +31,5 @@ jobs:
       - name: Run sonar-scanner
         run: sonar-scanner
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: sqp_071a1644cbc10ce5a58f6d907c6b71c92654f1e0
+          SONAR_HOST_URL: http://localhost:9000
