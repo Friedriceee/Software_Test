@@ -19,9 +19,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Install SonarScanner (via Homebrew)
+        run: brew install sonar-scanner
+
       - name: Run SonarScanner
         run: sonar-scanner
         env:
-       
           SONAR_TOKEN: sqp_071a1644cbc10ce5a58f6d907c6b71c92654f1e0
           SONAR_HOST_URL: http://localhost:9000
